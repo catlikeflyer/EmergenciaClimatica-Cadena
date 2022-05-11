@@ -57,10 +57,14 @@ const valueChange = () => {
 
   let addString = "";
 
+  let minVehicle = suggestion.reduce(function (prev, curr) {
+    return prev.totalEmissions < curr.totalEmissions ? prev : curr;
+  });
+
   suggestion.forEach((vehicle) => {
     addString += `<div class="col-md-4 col-sm-12 flexer-col">
     <img src=${vehicle.image} alt="" width="100" />
-    <h3 ${vehicle.minEmission ? 'class="min-emission"' : ""}>${
+    <h3 ${vehicle.totalEmissions === minVehicle.totalEmissions ? 'class="min-emission"' : ""}>${
       vehicle.name
     }</h3>
     <p>Se ocupan <strong>${vehicle.total}</strong> flete(s)</p>
