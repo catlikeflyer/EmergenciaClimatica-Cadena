@@ -46,7 +46,10 @@ p, li, a {
 
 }
 
-/* Plus minus button styler */
-#num-people {
+.footer {
+    background-color: #000000;
+    color: aliceblue;
+    padding: 10px;
     text-align: center;
+    font-family: 'Ubuntu', sans-serif;
 }
