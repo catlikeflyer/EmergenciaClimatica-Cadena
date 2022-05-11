@@ -36,7 +36,7 @@ const vehicleData = [
   },
   {
     name: "Avión",
-    emission: 115.4,
+    emission: 285,
     maxPeople: 150,
     maxCargo: 4800,
     image:
