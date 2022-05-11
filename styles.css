@@ -34,6 +34,13 @@ p, li, a {
     font-family: 'Roboto', sans-serif;
 }
 
+.num-counter input {
+    border-radius: 50px;
+    border: none;
+    text-align: center;
+    background: #ffffffc0;
+}
+
 .lister {
     text-align: start;
 }
@@ -47,7 +54,7 @@ p, li, a {
 }
 
 .footer {
-    background-color: #000000;
+    background-color: #000000b1;
     color: aliceblue;
     padding: 10px;
     text-align: center;
