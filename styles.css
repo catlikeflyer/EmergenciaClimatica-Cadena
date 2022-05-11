@@ -6,6 +6,10 @@ body {
     background-attachment: fixed;
 }
 
+.bg-navbar {
+    background-color: #004b06a1;
+}
+
 .box {
     display: flex;
     flex-direction: column;
