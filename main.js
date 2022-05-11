@@ -56,13 +56,15 @@ const valueChange = () => {
   console.log(suggestion);
 
   let addString = "";
+  let minEmissions = 10000000
+
 
   suggestion.forEach((vehicle) => {
     addString += `<div class="col-md-4 col-sm-12 flexer-col">
     <img src=${vehicle.image} alt="" width="100" />
     <h3>${vehicle.name}</h3>
     <p>Se ocupan <strong>${vehicle.total}</strong> flete(s)</p>
-    <p>Su emision de CO2 total por el viaje es de <strong>${vehicle.totalEmissions}</strong> g CO2 / km</p>
+    <p>Su emision de CO2 total por el viaje es de <strong>${vehicle.totalEmissions}</strong> g CO2 en el trayecto</p>
     <p>Se necesitan plantar <strong>${vehicle.trees}</strong> arboles para absorber las emisiones en un periodo de 10 años<p>
   </div>`;
   });
