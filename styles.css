@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 body {
     background-image: url("https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
     background-repeat: no-repeat;
@@ -22,6 +24,14 @@ body {
     background-color: #1a1a1aa9;
     border-radius: 10px;
     box-shadow: 10px;
+}
+
+.title-text {
+    font-family: 'Koulen', cursive;
+}
+
+p, li, a {
+    font-family: 'Roboto', sans-serif;
 }
 
 .lister {
