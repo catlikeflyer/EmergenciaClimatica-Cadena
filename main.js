@@ -44,6 +44,9 @@ const vehicleData = [
   },
 ];
 
+// CO2 Absortion of a single tree in a 10 year period in grams
+const treeAbsortion = 60000;
+
 const valueChange = () => {
   const people = numPeople.value;
   const km = numKm.value;
@@ -60,6 +63,7 @@ const valueChange = () => {
     <h3>${vehicle.name}</h3>
     <p>Se ocupan <strong>${vehicle.total}</strong> flete(s)</p>
     <p>Su emision de CO2 total por el viaje es de <strong>${vehicle.totalEmissions}</strong> g CO2 / km</p>
+    <p>Se necesitan plantar <strong>${vehicle.trees}</strong> arboles para absorber las emisiones en un periodo de 10 años<p>
   </div>`;
   });
 
@@ -69,6 +73,11 @@ const valueChange = () => {
 const calculateEmission = (vehicles, km, em) => {
   const emissions = vehicles * km * em;
   return emissions;
+};
+
+const calculateTrees = (emissions) => {
+    const trees = emissions/treeAbsortion;
+    return parseInt(trees + 1);
 };
 
 const howMuchWeNeed = (maxPeople, maxCargo, people, cargo) => {
@@ -95,6 +104,7 @@ const returnSuggestion = (people, km, kg) => {
         total: totalVehicles,
         totalEmissions: calculateEmission(totalVehicles, km, vehicle.emission),
         image: vehicle.image,
+        trees: calculateTrees(calculateEmission(totalVehicles, km, vehicle.emission))
       });
     }
   });
