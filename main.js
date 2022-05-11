@@ -44,8 +44,8 @@ const vehicleData = [
   },
 ];
 
-// Absortion of a single tree in a 10 year period in kilograms
-const treeAbsortion = 60;
+// CO2 Absortion of a single tree in a 10 year period in grams
+const treeAbsortion = 60000;
 
 const valueChange = () => {
   const people = numPeople.value;
@@ -77,7 +77,7 @@ const calculateEmission = (vehicles, km, em) => {
 
 const calculateTrees = (emissions) => {
     const trees = emissions/treeAbsortion;
-    return parseInt(trees);
+    return parseInt(trees + 1);
 };
 
 const howMuchWeNeed = (maxPeople, maxCargo, people, cargo) => {
