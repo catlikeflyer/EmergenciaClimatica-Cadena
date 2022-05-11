@@ -53,3 +53,7 @@ p, li, a {
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
 }
+
+.min-emission {
+    color: rgb(0, 208, 45);
+}
