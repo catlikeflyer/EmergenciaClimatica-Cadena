@@ -46,9 +46,11 @@ p, li, a {
     border: none;
     text-align: center;
     background: #11ff00c0;
-    margin-top: 2rem;
+    margin-top: 10px;
     color: aliceblue;
     padding: 0 10 0 10;
+    margin-bottom: 10px;
+    width: 80%;
 }
 
 #push:hover {
