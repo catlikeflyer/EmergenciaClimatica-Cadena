@@ -41,6 +41,21 @@ p, li, a {
     background: #ffffffc0;
 }
 
+#push {
+    border-radius: 50px;
+    border: none;
+    text-align: center;
+    background: #11ff00c0;
+    margin-top: 2rem;
+    color: aliceblue;
+    padding: 0 10 0 10;
+}
+
+#push:hover {
+    background: #68ff5dc0;
+    color: aliceblue;
+}
+
 .lister {
     text-align: start;
 }
@@ -63,4 +78,8 @@ p, li, a {
 
 .min-emission {
     color: rgb(0, 208, 45);
+}
+
+.alert {
+    color: red;
 }
