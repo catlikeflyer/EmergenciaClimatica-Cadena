@@ -9,6 +9,7 @@ const resultRender = document.getElementById("results");
 
 const vehicleData = [
   {
+    id: "car",
     name: "Auto",
     emission: 120.1,
     maxPeople: 5,
@@ -17,6 +18,7 @@ const vehicleData = [
       "https://seetech-corp.com/wp-content/uploads/2016/10/Car-PNG-File.png",
   },
   {
+    id: "bus",
     name: "Autobús",
     emission: 1300,
     maxPeople: 40,
@@ -24,6 +26,7 @@ const vehicleData = [
     image: "https://www.pngmart.com/files/6/Bus-Transparent-Images-PNG.png",
   },
   {
+    id: "van",
     name: "Van",
     emission: 180.5,
     maxPeople: 13,
@@ -32,6 +35,7 @@ const vehicleData = [
       "https://vans.mercedes-benz.com.mx/vans/es/sprinter/quick-access/body-types/sprinter-tourer/_jcr_content/parsysmeta/meta/image.mq6.png/1647914985000.png",
   },
   {
+    id: "trailer",
     name: "Trailer",
     emission: 1540,
     maxPeople: 2,
@@ -39,6 +43,7 @@ const vehicleData = [
     image: "https://www.picng.com/upload/truck/png_truck_23632.png",
   },
   {
+    id: "plane",
     name: "Avión",
     emission: 285,
     maxPeople: 150,
@@ -84,7 +89,8 @@ const valueChange = (km) => {
   `;
   });
 
-  resultRender.innerHTML = `<p>Kilometros: ${km.toFixed(2)} km</p>` + addString;
+  resultRender.innerHTML =
+    `<p>Kilometros: ${km.toFixed(2)} km</p>` + addString;
 };
 
 const calculateEmission = (vehicles, km, em) => {
@@ -131,7 +137,7 @@ const returnSuggestion = (people, km, kg) => {
   return vehicles;
 };
 
-const onCalculateClick = () => {
+const onButtonClick = () => {
   const latStartRad = latStart.value * (Math.PI / 180);
   const longStartRad = longStart.value * (Math.PI / 180);
   const latEndRad = latEnd.value * (Math.PI / 180);
