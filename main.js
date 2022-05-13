@@ -84,7 +84,7 @@ const valueChange = (km) => {
   `;
   });
 
-  resultRender.innerHTML = `<p>Kilometros: ${km} km</p>` + addString;
+  resultRender.innerHTML = `<p>Kilometros: ${km.toFixed(2)} km</p>` + addString;
 };
 
 const calculateEmission = (vehicles, km, em) => {
@@ -106,7 +106,6 @@ const howMuchWeNeed = (maxPeople, maxCargo, people, cargo) => {
 
 const returnSuggestion = (people, km, kg) => {
   let vehicles = [];
-  let minEmissions = 1000000000;
 
   vehicleData.forEach((vehicle) => {
     const totalVehicles = howMuchWeNeed(
@@ -132,27 +131,24 @@ const returnSuggestion = (people, km, kg) => {
   return vehicles;
 };
 
-const fetchData = () => {
-  let km = 1;
-
-  console.log("preddes");
-  fetch(
-    `http://router.project-osrm.org/route/v1/driving/${longStart.value},${latStart.value};${longEnd.value},${latEnd.value}?overview=false`
-  )
-    .then((response) => response.json())
-    .then((data) => console.log(data.routes[0].legs[0].distance));
-
-  return km;
-};
-
 const onCalculateClick = () => {
-  console.log("click");
+  const latStartRad = latStart.value * (Math.PI / 180);
+  const longStartRad = longStart.value * (Math.PI / 180);
+  const latEndRad = latEnd.value * (Math.PI / 180);
+  const longEndRad = longEnd.value * (Math.PI / 180);
+
+  const distance =
+    3963 *
+    Math.acos(
+      Math.sin(latStartRad) * Math.sin(latEndRad) +
+        Math.cos(latStartRad) *
+          Math.cos(latEndRad) *
+          Math.cos(longEndRad - longStartRad)
+    );
 
   if (latStart.value && longStart.value && latEnd.value && longEnd.value) {
-    const km = fetchData();
-    valueChange(km);
+    valueChange(distance);
   } else {
-    console.log("faltan");
     resultRender.innerHTML =
       "<h3 class='alert'>Por favor ingrese un todos los datos</h3>";
   }
