@@ -52,14 +52,7 @@
       <h2 class="title-text">Reduce tu huella de carbono</h2>
       <p>¿Cuántas personas se están transportando?</p>
       <div class="num-counter">
-        <input
-          type="number"
-          id="num-people"
-          value="1"
-          min="1"
-          max="100"
-          onchange="valueChange()"
-        />
+        <input type="number" id="num-people" value="1" min="1" max="100" />
         persona(s)
       </div>
       <br />
@@ -72,23 +65,55 @@
           min="1"
           max="5000"
           step="0.1"
-          onchange="valueChange()"
         />
         kilogramos
       </div>
       <br />
-      <p>¿Cuántos kilometros se van a recorrer?</p>
+      <p>Coordenadas de salida</p>
       <div class="num-counter">
         <input
           type="number"
-          id="num-km"
-          value="1"
-          min="1"
-          max="20000"
-          onchange="valueChange()"
+          id="num-latstart"
+          min="-90"
+          max="90"
+          placeholder="Latitud"
+          step="0.01"
         />
-        kilometros
+        <input
+          type="number"
+          id="num-longstart"
+          min="-180"
+          max="180"
+          step="0.01"
+          placeholder="Longitud"
+        />
       </div>
+      <br />
+      <p>Coordenadas de llegada</p>
+      <div class="num-counter">
+        <input
+        type="number"
+        id="num-latend"
+        min="-90"
+        max="90"
+        placeholder="Latitud"
+        step="0.01"
+      />
+        <input
+          type="number"
+          id="num-longend"
+          min="-180"
+          max="180"
+          step="0.01"
+          placeholder="Longitud"
+        />
+      </div>
+      <input
+        type="button"
+        id="push"
+        value="Calcular"
+        onclick="onCalculateClick()"
+      />
     </div>
     <div class="box">
       <h2 class="title-text">Resultados</h2>

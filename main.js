@@ -1,6 +1,10 @@
 const numKg = document.getElementById("num-kg");
 const numKm = document.getElementById("num-km");
 const numPeople = document.getElementById("num-people");
+const longStart = document.getElementById("num-longstart");
+const latStart = document.getElementById("num-latstart");
+const longEnd = document.getElementById("num-longend");
+const latEnd = document.getElementById("num-latend");
 const resultRender = document.getElementById("results");
 
 const vehicleData = [
@@ -47,9 +51,8 @@ const vehicleData = [
 // CO2 Absortion of a single tree in a 10 year period in grams
 const treeAbsortion = 60000;
 
-const valueChange = () => {
+const valueChange = (km) => {
   const people = numPeople.value;
-  const km = numKm.value;
   const kg = numKg.value;
 
   const suggestion = returnSuggestion(people, km, kg);
@@ -62,11 +65,14 @@ const valueChange = () => {
   });
 
   suggestion.forEach((vehicle) => {
-    addString += `<div class="col-md-4 col-sm-12 flexer-col">
+    addString += `
+    <div class="col-md-4 col-sm-12 flexer-col">
     <img src=${vehicle.image} alt="" width="100" />
-    <h3 ${vehicle.totalEmissions === minVehicle.totalEmissions ? 'class="min-emission"' : ""}>${
-      vehicle.name
-    }</h3>
+    <h3 ${
+      vehicle.totalEmissions === minVehicle.totalEmissions
+        ? 'class="min-emission"'
+        : ""
+    }>${vehicle.name}</h3>
     <p>Se ocupan <strong>${vehicle.total}</strong> flete(s)</p>
     <p>Su emision de CO2 total por el viaje es de <strong>${
       vehicle.totalEmissions
@@ -74,10 +80,11 @@ const valueChange = () => {
     <p>Se necesitan plantar <strong>${
       vehicle.trees
     }</strong> arboles para absorber las emisiones en un periodo de 10 años<p>
-  </div>`;
+  </div>
+  `;
   });
 
-  resultRender.innerHTML = addString;
+  resultRender.innerHTML = `<p>Kilometros: ${km} km</p>` + addString;
 };
 
 const calculateEmission = (vehicles, km, em) => {
@@ -123,4 +130,30 @@ const returnSuggestion = (people, km, kg) => {
   });
 
   return vehicles;
+};
+
+const fetchData = () => {
+  let km = 1;
+
+  console.log("preddes");
+  fetch(
+    `http://router.project-osrm.org/route/v1/driving/${longStart.value},${latStart.value};${longEnd.value},${latEnd.value}?overview=false`
+  )
+    .then((response) => response.json())
+    .then((data) => console.log(data.routes[0].legs[0].distance));
+
+  return km;
+};
+
+const onCalculateClick = () => {
+  console.log("click");
+
+  if (latStart.value && longStart.value && latEnd.value && longEnd.value) {
+    const km = fetchData();
+    valueChange(km);
+  } else {
+    console.log("faltan");
+    resultRender.innerHTML =
+      "<h3 class='alert'>Por favor ingrese un todos los datos</h3>";
+  }
 };
